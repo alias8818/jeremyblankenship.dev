@@ -463,13 +463,13 @@
         <!-- Hardware & Kernel Work -->
         <section>
             <h2>Hardware & Kernel Work</h2>
-            <p style="color: var(--text-dim); font-size: 0.92rem; margin-bottom: 28px; max-width: 600px;">Work on NVIDIA's Grace Blackwell consumer architecture (sm_121 / DGX Spark) — a platform with LPDDR5X memory, blockscaled MMA paths, and TMA async data movement that differs from H100/A100. These projects live in a private lab; links point to public mirrors or documentation where available.</p>
+            <p style="color: var(--text-dim); font-size: 0.92rem; margin-bottom: 28px; max-width: 600px;">Work on NVIDIA's Grace Blackwell consumer architecture (sm_121 / DGX Spark) — a platform with LPDDR5X memory, blockscaled MMA paths, and TMA async data movement that differs from H100/A100/H200/B200/B300. These projects live in a private lab; links point to public mirrors or documentation where available.</p>
 
             <div class="lab-grid">
                 <div class="lab-item">
                     <h3>FlashInfer SM121</h3>
-                    <span class="tagline">Kernel debugging and optimization for Blackwell</span>
-                    <p>Patched FlashInfer's CuTe-DSL path for sm_121. Documented Xid 13 and Xid 43 GPU faults — illegal instruction errors, misaligned addresses, and warp exceptions found in NVIDIA's kernel code running on sm_121. Built a systematic debugging campaign with variant matrices and regression runbooks. Wrote a GB10 optimization guide with measured benchmarks, architecture differences from H100/A100, and kernel strategies for LPDDR5X.</p>
+                    <span class="tagline">Kernel debugging and patching for Blackwell</span>
+                    <p>Debugged and patched FlashInfer for sm_121. When primary kernel paths produced Xid 13 and Xid 43 GPU faults, worked through the CuTe-DSL fallback path as a secondary route. Documented illegal instruction errors, misaligned addresses, and warp exceptions found in NVIDIA's kernel code running on sm_121. Built a systematic debugging campaign with variant matrices and regression runbooks for a platform whose architecture (LPDDR5X, blockscaled MMA, TMA) differs from H100/A100/H200/B200/B300.</p>
                 </div>
 
                 <div class="lab-item">
@@ -512,7 +512,7 @@
                 <div class="lab-item">
                     <h3>CoSpec</h3>
                     <span class="tagline">Spectral initialization from token co-occurrence</span>
-                    <p>Research on whether variance-matched spectral initialization from co-occurrence matrices improves early training dynamics for GPT-2-style models. Completed study with controlled experiments across five conditions. Result: the e_only condition beat baseline in both screening and confirmation runs. Rust backend for co-occurrence accumulation performance.</p>
+                    <p>Research on whether variance-matched spectral initialization from co-occurrence matrices improves early training dynamics for GPT-2-style models. Completed study with controlled experiments across five conditions. Result: the e_only condition beat baseline in both screening and confirmation runs. Rust backend for co-occurrence accumulation performance. Intended for arXiv submission; preparing for public release.</p>
                 </div>
 
                 <div class="lab-item">

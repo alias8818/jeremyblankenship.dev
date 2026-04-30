@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jeremy Blankenship</title>
-    <meta name="description" content="I build control planes for autonomous AI research systems — queue safety, worker orchestration, evidence capture, and provenance.">
+    <meta name="description" content="I build auditable AI infrastructure: GPU orchestration, evidence capture, provenance, and autonomous research control planes.">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500&display=swap');
 
@@ -63,10 +63,16 @@
             color: var(--accent);
         }
 
-        .hero p {
+        .hero .bridge {
             font-size: 1.05rem;
+            color: var(--text);
+            max-width: 580px;
+            margin-bottom: 16px;
+        }
+
+        .hero .location {
+            font-size: 0.85rem;
             color: var(--text-dim);
-            max-width: 540px;
         }
 
         /* Sections */
@@ -185,7 +191,42 @@
             content: ' →';
         }
 
-        /* Experience */
+        /* Engineering Focus */
+        .focus-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .focus-item {
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .focus-item .focus-label {
+            font-weight: 500;
+            color: var(--text-bright);
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+
+        .focus-item .focus-desc {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+
+        .focus-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent-dim);
+        }
+
+        /* Operational Background */
         .experience-list {
             list-style: none;
         }
@@ -224,6 +265,14 @@
 
         .contact-links a:hover {
             color: var(--text-bright);
+        }
+
+        /* Disclaimer */
+        .disclaimer {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            margin-top: 16px;
+            opacity: 0.7;
         }
 
         /* Footer */
@@ -272,8 +321,9 @@
     <div class="container">
         <!-- Hero -->
         <div class="hero">
-            <h1>I build <span class="accent">control planes</span> for autonomous AI research systems.</h1>
-            <p>Queue safety, worker orchestration, evidence capture, and provenance. Making autonomous AI work observable, auditable, and honest about what it produced and how.</p>
+            <h1>I build <span class="accent">auditable AI infrastructure</span>: GPU orchestration, evidence capture, provenance, and autonomous research control planes.</h1>
+            <p class="bridge">I work at the intersection of enterprise server engineering, accelerated AI infrastructure, and local autonomous systems. My focus is making AI work observable, bounded, and honest about what it produced — queue safety, worker orchestration, GPU-aware dispatch, evidence capture, provenance, claim ledgers, and failure modes that surface clearly instead of hiding behind model output.</p>
+            <p class="location">Oklahoma City, OK</p>
         </div>
 
         <!-- Work -->
@@ -283,9 +333,9 @@
             <div class="project">
                 <h3>Enoch</h3>
                 <span class="tagline">Agentic research control plane</span>
-                <p>Enoch treats autonomous AI failures as control-plane problems, not model problems. It queues ideas, gates dispatch, supervises local AI runs, preserves evidence, and packages AI-generated research artifacts with provenance metadata and claim ledgers.</p>
+                <p>Enoch treats autonomous AI failure modes as infrastructure problems: stale queues, hidden worker state, orphaned processes, GPU contention, scattered evidence, and reports that overstate results. It manages queue state, gates dispatch, supervises local AI runs, preserves evidence, and packages AI-generated research artifacts with provenance metadata and claim ledgers.</p>
 
-                <div class="insight">A model can propose and execute work, but a separate system should decide what is queued, what is safe to dispatch, whether work is actually done, and what evidence supports the final artifact.</div>
+                <div class="insight">The goal is not to make autonomous AI look smarter. The goal is to make its work inspectable: what ran, when it ran, what evidence was captured, what claims were made, and where uncertainty remains.</div>
 
                 <div class="component-grid">
                     <div class="component-row">
@@ -318,7 +368,7 @@
                     </div>
                 </div>
 
-                <p>The Enoch corpus — 120 AI-generated research artifacts with evidence bundles, claim ledgers, reproducibility metadata, and quality reports — is released publicly for inspection and critique. The maintainer does not claim personal authorship of the generated papers.</p>
+                <p>My role is the infrastructure: the control plane, dispatch gates, telemetry, artifact packaging, provenance model, and release process. The Enoch corpus — 120 AI-generated research artifacts with evidence bundles, claim ledgers, reproducibility metadata, and quality reports — is published for inspection and critique. I do not claim personal authorship of the generated papers.</p>
 
                 <div class="project-links">
                     <a href="https://github.com/alias8818/enoch-agentic-research-system">System repository</a>
@@ -329,9 +379,9 @@
             <div class="project">
                 <h3>CouncilRouter</h3>
                 <span class="tagline">Multi-model AI deliberation proxy</span>
-                <p>CouncilRouter orchestrates multiple AI models to deliberate and reach consensus — catching hallucinations, validating code, and challenging groupthink through a Devil's Advocate critique module. It operates 300+ models via OpenRouter with multi-round peer review and graceful degradation.</p>
+                <p>CouncilRouter explores whether multi-model critique can reduce blind spots in complex reasoning, code review, and architecture decisions. It orchestrates 300+ models via OpenRouter with multi-round peer review, code-aware synthesis, and a Devil's Advocate module that challenges consensus with critical analysis.</p>
 
-                <div class="insight">Single models hallucinate, miss edge cases, and carry their own biases. A council catches what individuals miss.</div>
+                <div class="insight">It treats consensus as a signal, not proof.</div>
 
                 <div class="component-grid">
                     <div class="component-row">
@@ -358,15 +408,39 @@
             </div>
         </section>
 
-        <!-- Experience -->
+        <!-- Engineering Focus -->
         <section>
-            <h2>Background</h2>
+            <h2>Engineering Focus</h2>
+            <div class="focus-grid">
+                <div class="focus-item">
+                    <div class="focus-label">AI Infrastructure Control Planes</div>
+                    <div class="focus-desc">Dispatch safety, GPU worker state, telemetry, evidence sync, artifact provenance</div>
+                </div>
+                <div class="focus-item">
+                    <div class="focus-label">Enterprise AI Operations</div>
+                    <div class="focus-desc">Large-scale datacenter deployment, Day 2 operations, triage, failure analysis, process development</div>
+                </div>
+                <div class="focus-item">
+                    <div class="focus-label">NVIDIA Accelerated Systems</div>
+                    <div class="focus-desc">Inference stacks, quantization validation, TensorRT-LLM throughput benchmarking, CUDA-adjacent tooling, constrained local GPU operations</div>
+                </div>
+                <div class="focus-item">
+                    <div class="focus-label">Local-First Infrastructure</div>
+                    <div class="focus-desc">Proxmox, OPNsense, ZFS, monitoring, alerting, backup validation, recovery automation, security hardening</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Operational Background -->
+        <section>
+            <h2>Operational Background</h2>
             <ul class="experience-list">
                 <li>16 years in enterprise server and AI infrastructure support, rising to Senior Principal Engineer</li>
                 <li>Large-scale AI datacenter deployment and Day 2 operations support</li>
-                <li>Process development, personnel training, operational triage under pressure</li>
-                <li>Production-style infrastructure: Proxmox, OPNsense, ZFS, monitoring, alerting, backup validation, recovery automation, security hardening</li>
-                <li>Local NVIDIA hardware for AI systems exploration: CUDA/kernel-adjacent projects, inference stacks, model experimentation</li>
+                <li>Hardware and software triage under pressure: GPU systems, server platforms, deployment blockers, process gaps, and recovery paths</li>
+                <li>Process development, personnel training, escalation support, and operational runbook improvement</li>
+                <li>Production-style local infrastructure: Proxmox, OPNsense, ZFS, monitoring, alerting, backup validation, recovery automation, security hardening</li>
+                <li>NVIDIA AI infrastructure: inference stack experimentation, quantization validation, TensorRT-LLM benchmarking, CUDA-adjacent tooling, and constrained GPU worker orchestration</li>
             </ul>
         </section>
 
@@ -377,6 +451,7 @@
                 <a href="https://github.com/alias8818">GitHub</a>
                 <a href="mailto:jeremy@jeremyblankenship.dev">Email</a>
             </div>
+            <p class="disclaimer">Personal site and independent projects. Views and work are my own.</p>
         </section>
 
         <footer>

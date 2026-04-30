@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeremy Blankenship</title>
+    <meta name="description" content="I build control planes for autonomous AI research systems — queue safety, worker orchestration, evidence capture, and provenance.">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500&display=swap');
+
+        :root {
+            --bg: #0e0e10;
+            --bg-raised: #16161a;
+            --bg-card: #1a1a1f;
+            --border: #2a2a30;
+            --text: #c8c8cd;
+            --text-dim: #8888a0;
+            --text-bright: #e8e8ef;
+            --accent: #c9a44c;
+            --accent-dim: #a0843a;
+            --accent-glow: rgba(201, 164, 76, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', -apple-system, sans-serif;
+            font-weight: 300;
+            line-height: 1.7;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 120px 0 80px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero h1 {
+            font-family: 'Crimson Pro', serif;
+            font-weight: 600;
+            font-size: 2.4rem;
+            color: var(--text-bright);
+            line-height: 1.3;
+            margin-bottom: 24px;
+            letter-spacing: -0.01em;
+        }
+
+        .hero h1 .accent {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: var(--text-dim);
+            max-width: 540px;
+        }
+
+        /* Sections */
+        section {
+            padding: 64px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-family: 'Crimson Pro', serif;
+            font-weight: 600;
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 32px;
+            letter-spacing: 0.01em;
+        }
+
+        /* Project Cards */
+        .project {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 36px 32px;
+            margin-bottom: 24px;
+            transition: border-color 0.2s ease;
+        }
+
+        .project:hover {
+            border-color: var(--accent-dim);
+        }
+
+        .project h3 {
+            font-family: 'Crimson Pro', serif;
+            font-weight: 600;
+            font-size: 1.35rem;
+            color: var(--text-bright);
+            margin-bottom: 8px;
+        }
+
+        .project .tagline {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 400;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .project p {
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+
+        .project .insight {
+            border-left: 2px solid var(--accent);
+            padding-left: 16px;
+            margin: 20px 0;
+            color: var(--text-dim);
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+
+        .component-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2px;
+            margin: 20px 0;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .component-row {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            background: var(--bg-raised);
+        }
+
+        .component-name {
+            padding: 10px 14px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--accent);
+            border-right: 1px solid var(--border);
+            white-space: nowrap;
+        }
+
+        .component-desc {
+            padding: 10px 14px;
+            font-size: 0.82rem;
+            color: var(--text-dim);
+        }
+
+        .project-links {
+            margin-top: 20px;
+            display: flex;
+            gap: 16px;
+        }
+
+        .project-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 400;
+            transition: color 0.2s;
+        }
+
+        .project-links a:hover {
+            color: var(--text-bright);
+        }
+
+        .project-links a::after {
+            content: ' →';
+        }
+
+        /* Experience */
+        .experience-list {
+            list-style: none;
+        }
+
+        .experience-list li {
+            padding: 12px 0;
+            padding-left: 20px;
+            position: relative;
+            color: var(--text);
+        }
+
+        .experience-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 20px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent-dim);
+        }
+
+        /* Contact */
+        .contact-links {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .contact-links a:hover {
+            color: var(--text-bright);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            .hero {
+                padding: 80px 0 48px;
+            }
+
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+
+            .project {
+                padding: 24px 20px;
+            }
+
+            .component-row {
+                grid-template-columns: 1fr;
+            }
+
+            .component-name {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+                padding: 8px 14px 4px;
+            }
+
+            .component-desc {
+                padding: 4px 14px 10px;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero -->
+        <div class="hero">
+            <h1>I build <span class="accent">control planes</span> for autonomous AI research systems.</h1>
+            <p>Queue safety, worker orchestration, evidence capture, and provenance. Making autonomous AI work observable, auditable, and honest about what it produced and how.</p>
+        </div>
+
+        <!-- Work -->
+        <section>
+            <h2>Work</h2>
+
+            <div class="project">
+                <h3>Enoch</h3>
+                <span class="tagline">Agentic research control plane</span>
+                <p>Enoch treats autonomous AI failures as control-plane problems, not model problems. It queues ideas, gates dispatch, supervises local AI runs, preserves evidence, and packages AI-generated research artifacts with provenance metadata and claim ledgers.</p>
+
+                <div class="insight">A model can propose and execute work, but a separate system should decide what is queued, what is safe to dispatch, whether work is actually done, and what evidence supports the final artifact.</div>
+
+                <div class="component-grid">
+                    <div class="component-row">
+                        <div class="component-name">Control Plane API</div>
+                        <div class="component-desc">Queue state, dispatch decisions, project state, pause and maintenance controls</div>
+                    </div>
+                    <div class="component-row">
+                        <div class="component-name">Wake Gate</div>
+                        <div class="component-desc">Proves a run is actually done via process-tree tracking and CPU/GPU quiet-window telemetry</div>
+                    </div>
+                    <div class="component-row">
+                        <div class="component-name">Worker Preflight</div>
+                        <div class="component-desc">Authenticated health checks before dispatch — fails early rather than silently</div>
+                    </div>
+                    <div class="component-row">
+                        <div class="component-name">Single-Lane Safety</div>
+                        <div class="component-desc">Prevents overlapping GPU work on constrained hardware; control plane holds the lock</div>
+                    </div>
+                    <div class="component-row">
+                        <div class="component-name">Evidence Sync</div>
+                        <div class="component-desc">Copies run notes, metrics, evidence bundles, and claim ledgers before artifact generation</div>
+                    </div>
+                    <div class="component-row">
+                        <div class="component-name">Artifact Writer</div>
+                        <div class="component-desc">Generates publication-style reports from evidence, preserving uncertainty and provenance</div>
+                    </div>
+                    <div class="component-row">
+                        <div class="component-name">Quality Gates</div>
+                        <div class="component-desc">Scans for placeholder citations, missing provenance, and missing evidence before corpus entry</div>
+                    </div>
+                </div>
+
+                <p>The Enoch corpus — 120 AI-generated research artifacts with evidence bundles, claim ledgers, reproducibility metadata, and quality reports — is released publicly for inspection and critique. The maintainer does not claim personal authorship of the generated papers.</p>
+
+                <div class="project-links">
+                    <a href="https://github.com/alias8818/enoch-agentic-research-system">System repository</a>
+                    <a href="https://github.com/alias8818/enoch-ai-research-corpus">Corpus</a>
+                </div>
+            </div>
+
+            <div class="project">
+                <h3>CouncilRouter</h3>
+                <span class="tagline">Multi-model AI deliberation proxy</span>
+                <p>CouncilRouter orchestrates multiple AI models to deliberate and reach consensus — catching hallucinations, validating code, and challenging groupthink through a Devil's Advocate critique module. It operates 300+ models via OpenRouter with multi-round peer review and graceful degradation.</p>
+
+                <div class="insight">Single models hallucinate, miss edge cases, and carry their own biases. A council catches what individuals miss.</div>
+
+                <div class="component-grid">
+                    <div class="component-row">
+                        <div class="component-name">Deliberation Engine</div>
+                        <div class="component-desc">Multi-round peer review across models with configurable rounds and graceful degradation</div>
+                    </div>
+                    <div class="component-row">
+                        <div class="component-name">Code-Aware Synthesis</div>
+                        <div class="component-desc">Detects code, compares functional equivalence, validates syntax, security, and error handling</div>
+                    </div>
+                    <div class="component-row">
+                        <div class="component-name">Devil's Advocate</div>
+                        <div class="component-desc">Challenges consensus with critical analysis at configurable intensity</div>
+                    </div>
+                    <div class="component-row">
+                        <div class="component-name">Production Layer</div>
+                        <div class="component-desc">PostgreSQL + Redis, REST API, JWT/API key auth, rate limiting, idempotency, SSE streaming</div>
+                    </div>
+                </div>
+
+                <div class="project-links">
+                    <a href="https://github.com/alias8818/CouncilRouter">Repository</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section>
+            <h2>Background</h2>
+            <ul class="experience-list">
+                <li>16 years in enterprise server and AI infrastructure support, rising to Principal Engineer level</li>
+                <li>Large-scale AI datacenter deployment and Day 2 operations support</li>
+                <li>Process development, personnel training, operational triage under pressure</li>
+                <li>Production-style infrastructure: Proxmox, OPNsense, ZFS, monitoring, alerting, backup validation, recovery automation, security hardening</li>
+                <li>Local NVIDIA hardware for AI systems exploration: CUDA/kernel-adjacent projects, inference stacks, model experimentation</li>
+            </ul>
+        </section>
+
+        <!-- Contact -->
+        <section>
+            <h2>Contact</h2>
+            <div class="contact-links">
+                <a href="https://github.com/alias8818">GitHub</a>
+                <a href="mailto:jeremy@jeremyblankenship.dev">Email</a>
+            </div>
+        </section>
+
+        <footer>
+            Jeremy Blankenship
+        </footer>
+    </div>
+</body>
+</html>

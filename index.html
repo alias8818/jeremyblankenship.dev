@@ -396,7 +396,7 @@
                     </div>
                     <div class="component-row">
                         <div class="component-name">Wake Gate</div>
-                        <div class="component-desc">Proves a run is actually done via process-tree tracking and CPU/GPU quiet-window telemetry</div>
+                        <div class="component-desc">Confirms a run is complete via process-tree tracking and CPU/GPU quiet-window telemetry</div>
                     </div>
                     <div class="component-row">
                         <div class="component-name">Worker Preflight</div>
@@ -420,7 +420,7 @@
                     </div>
                 </div>
 
-                <p>My role is the infrastructure: the control plane, dispatch gates, telemetry, artifact packaging, provenance model, and release process. The Enoch corpus — 120 AI-generated research artifacts with evidence bundles, claim ledgers, reproducibility metadata, and quality reports — is published for inspection and critique. I do not claim personal authorship of the generated papers.</p>
+                <p>My role is the infrastructure: the control plane, dispatch gates, telemetry, artifact packaging, provenance model, and release process. The Enoch corpus — 120 AI-generated research artifacts produced over approximately two weeks, with evidence bundles, claim ledgers, reproducibility metadata, and quality reports — is published for inspection and critique. I do not claim personal authorship of the generated papers.</p>
 
                 <div class="project-links">
                     <a href="https://github.com/alias8818/enoch-agentic-research-system">System repository</a>
@@ -431,7 +431,7 @@
             <div class="project">
                 <h3>CouncilRouter</h3>
                 <span class="tagline">Multi-model AI deliberation proxy</span>
-                <p>CouncilRouter explores whether multi-model critique can reduce blind spots in complex reasoning, code review, and architecture decisions. It orchestrates 300+ models via OpenRouter with multi-round peer review, code-aware synthesis, and a Devil's Advocate module that challenges consensus with critical analysis.</p>
+                <p>CouncilRouter explores whether multi-model critique can reduce blind spots in complex reasoning, code review, and architecture decisions. It routes requests to 300+ externally-hosted models via OpenRouter with multi-round peer review, code-aware synthesis, and a Devil's Advocate module that challenges consensus with critical analysis.</p>
 
                 <div class="insight">It treats consensus as a signal, not proof.</div>
 
@@ -463,7 +463,7 @@
         <!-- Hardware & Kernel Work -->
         <section>
             <h2>Hardware & Kernel Work</h2>
-            <p style="color: var(--text-dim); font-size: 0.92rem; margin-bottom: 28px; max-width: 600px;">Work on NVIDIA's Grace Blackwell consumer architecture (sm_121 / DGX Spark) — a platform with LPDDR5X memory, blockscaled MMA paths, and TMA async data movement that differs from H100/A100/H200/B200/B300. These projects live in a private lab; links point to public mirrors or documentation where available.</p>
+            <p style="color: var(--text-dim); font-size: 0.92rem; margin-bottom: 28px; max-width: 600px;">Work on NVIDIA's Grace Blackwell consumer architecture (sm_121 / DGX Spark) — a platform with LPDDR5X memory, blockscaled MMA paths, and TMA async data movement that differs from H100/A100/H200/B200/B300. These projects were done in a private lab and are not publicly released.</p>
 
             <div class="lab-grid">
                 <div class="lab-item">
@@ -512,7 +512,7 @@
                 <div class="lab-item">
                     <h3>CoSpec</h3>
                     <span class="tagline">Spectral initialization from token co-occurrence</span>
-                    <p>Research on whether variance-matched spectral initialization from co-occurrence matrices improves early training dynamics for GPT-2-style models. Completed study with controlled experiments across five conditions. Result: the e_only condition beat baseline in both screening and confirmation runs. Rust backend for co-occurrence accumulation performance. Intended for arXiv submission; preparing for public release.</p>
+                    <p>Research on whether variance-matched spectral initialization from token co-occurrence matrices improves early training dynamics for GPT-2-style models. Completed study with controlled experiments across five conditions (baseline, e_only, h_only, e_plus_h, spectrum_random). Result: the e_only condition — initializing only the embedding matrix from co-occurrence spectra — beat baseline in both screening and confirmation runs. Rust backend for co-occurrence accumulation performance.</p>
                 </div>
 
                 <div class="lab-item">
@@ -550,8 +550,8 @@
         <section>
             <h2>Operational Background</h2>
             <ul class="experience-list">
-                <li>16 years in enterprise server and AI infrastructure support, rising to Senior Principal Engineer</li>
-                <li>Large-scale AI datacenter deployment and Day 2 operations support</li>
+                <li>16 years at a Fortune 50 technology company in enterprise server and AI infrastructure, currently Senior Principal Engineer</li>
+                <li>Large-scale AI datacenter deployment and Day 2 operations support at scales of thousands of racks</li>
                 <li>Hardware and software triage under pressure: GPU systems, server platforms, deployment blockers, process gaps, and recovery paths</li>
                 <li>Process development, personnel training, escalation support, and operational runbook improvement</li>
                 <li>Production-style local infrastructure: Proxmox, OPNsense, ZFS, monitoring, alerting, backup validation, recovery automation, security hardening</li>

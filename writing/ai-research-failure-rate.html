@@ -283,9 +283,11 @@
     <div class="num"><span class="value">373</span><span class="label">do not</span></div>
 </div>
 
-<p>I built an agentic research system called Enoch. It queues ideas, gates worker dispatch, supervises GPU runs, syncs evidence, and packages the results as AI-generated research artifacts. After duplicate-slug cleanup, the public corpus now contains 376 canonical artifacts.</p>
+<p>I built an agentic research system called Enoch. It queues ideas, gates worker dispatch, supervises GPU runs, syncs evidence, and packages the results as AI-generated research artifacts. The public corpus now contains 376 canonical artifacts.</p>
 
-<p>I also built the audit gate that inspects those artifacts. Its job is to refuse anything that does not meet a strict claim-and-evidence contract. It passes three papers. It rejects the other 373.</p>
+<p>That number changed during the release cleanup. The first public pass had 497 slug directories. A dedupe audit found 119 duplicate clusters and 121 duplicate directories. The cleanup kept the unsuffixed canonical slug, removed the suffixed siblings, and recovered 118 populated claim ledgers from older duplicate siblings before deleting them. The result is smaller and more honest: 376 unique topics, not 497 directory entries.</p>
+
+<p>I also built the audit gate that inspects those artifacts. Its job is to refuse anything that does not meet a strict claim-and-evidence contract. The dedupe pass improved one severe failure mode — empty claim ledgers dropped from 374 to 255 — but it did not magically make the papers verifiable. The strict gate still passes three papers. It rejects the other 373.</p>
 
 <p>That failure rate is on the front page of the project. Not buried in a quality report. Not hedged with a "work in progress" banner. Headlined, in 48-point type, next to the project hero image, with a link to the three that pass and a link to the audit report for the ones that do not.</p>
 
@@ -319,9 +321,19 @@
 
 <p>That is the gate. It is strict on purpose. It is not asking "did the paper look professional?" It is asking "if someone wanted to check your claims, could they?"</p>
 
-<p>For 373 of the 376 papers, the answer is no. The most common reason is the simplest one: the paper makes claims in prose, references a <code>results/throughput.csv</code> file to back them up, and that file does not exist in the public repository. The script tracked 1,429 such references across the cleaned corpus. Only 42 of the referenced files are publicly present. The other 1,387 point at artifacts on my private filesystem that a reader cannot see.</p>
+<p>For 373 of the 376 papers, the answer is no. The most common reason is the simplest one: the paper makes claims in prose, references a <code>results/throughput.csv</code> file to back them up, and that file does not exist in the public repository. The script tracked 1,429 result-file references across the cleaned corpus. Only 22 of the referenced files are publicly present. The other 1,387 point at artifacts on my private filesystem that a reader cannot see.</p>
 
 <p>I could have shipped the release without this number being visible. I chose not to.</p>
+
+<h2>What the cleanup taught me</h2>
+
+<p>The dedupe pass is the part I almost wish I had done before publishing the first version of this essay, because it made the release more interesting and more uncomfortable.</p>
+
+<p>The newer canonical papers often had the better prose. The older suffixed siblings often had the better audit discipline: populated claim ledgers, even when the prose was shorter. If I had simply deleted the duplicates, I would have kept the cleaner directory layout and thrown away useful evidence structure. So the cleanup did the less glamorous thing: it merged discipline back into the canonical artifact before deleting the duplicate.</p>
+
+<p>That is the actual lesson. AI research release hygiene is not just writing better papers. It is preserving the boring connective tissue — claim ledgers, manifests, result-file references, provenance fields — when the pipeline changes shape. The prose can improve while the evidence model regresses. Unless a validator catches that, the release looks better while becoming less auditable.</p>
+
+<p>After cleanup, the denominator fell from 497 to 376 and 118 claim ledgers were rescued. The strict pass count stayed at three. That is the key fact. Duplicates were not the real problem. Missing public evidence was.</p>
 
 <h2>The three that pass</h2>
 

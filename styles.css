@@ -91,3 +91,28 @@ footer { padding: 34px 0 42px; color: var(--muted); font-size: .86rem; border-to
   .numbers { grid-template-columns: 1fr; }
   .project-links, .contact-links { display: grid; grid-template-columns: 1fr; }
 }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --canvas: #181715;
+    --surface: #252320;
+    --card: #1f1e1b;
+    --ink: #faf9f5;
+    --body: #ddd6cb;
+    --muted: #a09d96;
+    --hairline: rgba(250, 249, 245, .14);
+    --hairline-strong: rgba(250, 249, 245, .22);
+    --primary: #d88468;
+    --primary-active: #f2b29a;
+    --dark: #100f0e;
+    --on-dark: #faf9f5;
+  }
+  body { background: radial-gradient(circle at 16% 0%, rgba(216,132,104,.16), transparent 28rem), linear-gradient(180deg, #1d1b18, var(--canvas) 56%, #141311); }
+  .project, .lab-item, .article-entry, .article-stub, .numbers .num { background: rgba(37,35,32,.82); }
+  .article-stub { background: transparent; }
+  .component-grid { background: var(--hairline); }
+  .component-row { background: rgba(31,30,27,.9); }
+  .article-body code { background: rgba(37,35,32,.95); }
+  .article-body pre { background: #100f0e; }
+}

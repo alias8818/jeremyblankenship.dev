@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jeremy Blankenship</title>
-    <meta name="description" content="I build auditable AI infrastructure: GPU orchestration, evidence capture, provenance, and autonomous research control planes.">
+    <meta name="description" content="I build auditable AI infrastructure: control planes, audit gates, and Blackwell kernel debugging for GPU work.">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500&display=swap');
 
@@ -403,10 +403,43 @@
 
         <!-- Hero -->
         <div class="hero">
-            <h1>I build <span class="accent">auditable AI infrastructure</span>: GPU orchestration, evidence capture, provenance, and autonomous research control planes.</h1>
-            <p class="bridge">I work at the intersection of enterprise server engineering, accelerated AI infrastructure, and local autonomous systems. My focus is making AI work observable, bounded, and honest about what it produced — queue safety, worker orchestration, GPU-aware dispatch, evidence capture, provenance, claim ledgers, and failure modes that surface clearly instead of hiding behind model output.</p>
+            <h1>I build <span class="accent">auditable AI infrastructure</span>: control planes, audit gates, and Blackwell (sm_121) kernel debugging for GPU work.</h1>
+            <p class="bridge">I committed patches to FlashInfer and CUTLASS for NVIDIA's sm_121 — the Blackwell variant on GB10. I built an agentic research system that generates AI research papers and flags 494 of its own 497 outputs as not meeting my audit bar. I work at the seam between datacenter GPU hardware and the software that tries to pretend hardware doesn't matter.</p>
             <p class="location">Oklahoma City, OK</p>
         </div>
+
+        <!-- Hardware & Kernel Work -->
+        <section>
+            <h2>Hardware & Kernel Work</h2>
+            <p style="color: var(--text-dim); font-size: 0.92rem; margin-bottom: 28px; max-width: 600px;">Work on NVIDIA's Grace Blackwell consumer architecture (sm_121 / DGX Spark) — LPDDR5X memory, blockscaled MMA paths, and TMA async data movement, distinct from H100/A100/H200/B200/B300 in ways that break most vendor kernels. Committed patches, documented Xid faults, and ran private lab campaigns.</p>
+
+            <div class="lab-grid">
+                <div class="lab-item">
+                    <h3>FlashInfer SM121</h3>
+                    <span class="tagline">Kernel debugging and patching for Blackwell</span>
+                    <p>Debugged and patched FlashInfer for sm_121. When primary kernel paths produced Xid 13 and Xid 43 GPU faults, worked through the CuTe-DSL fallback path as a secondary route. Documented illegal instruction errors, misaligned addresses, and warp exceptions found in NVIDIA's kernel code running on sm_121. Built a systematic debugging campaign with variant matrices and regression runbooks for a platform whose architecture (LPDDR5X, blockscaled MMA, TMA) differs from H100/A100/H200/B200/B300.</p>
+                </div>
+
+                <div class="lab-item">
+                    <h3>CUTLASS Blockscaled TMA</h3>
+                    <span class="tagline">Patches to NVIDIA's CUTLASS for sm_121 TMA operations</span>
+                    <p>Modified NVIDIA's CUTLASS library for sm_121 blockscaled TMA operations — fixing how the Tensor Memory Accelerator loads data for the Blackwell blockscaled MMA path. Patches cover sm_100, sm_120, and sm_121 layout and builder headers.</p>
+                </div>
+
+                <div class="lab-item">
+                    <h3>Blackwell Inference Patches</h3>
+                    <span class="tagline">vLLM, llama.cpp, and Mamba kernel work for GB10</span>
+                    <p>Extended vLLM with SM120/SM121 compute capability mapping and MXFP4 backend detection. Added MXFP4/MoE tuning and BLACKWELL-OPT compilation flags to llama.cpp. Optimized Mamba SSM kernels: d_state reduction from 128→64 (27–34% faster on LPDDR5X), custom Triton kernels with explicit backward passes, and nsight profiling harnesses with A/B testing across BF16/TF32/torch.compile modes.</p>
+                </div>
+
+                <div class="lab-item">
+                    <h3>Project Squeegee</h3>
+                    <span class="tagline">FP4 hotpatches and diffusion LM research</span>
+                    <p>Seven FlashInfer SM121 FP4 hotpatches — workarounds for broken vendor code causing Xid 13 errors on GB10. Diffusion LM research pipeline with curriculum generation, education quality scoring, and reasoning parsers. Tracked and documented GPU crashes from vendor kernel code.</p>
+                </div>
+            </div>
+        </section>
+
 
         <!-- Work -->
         <section>
@@ -450,7 +483,7 @@
                     </div>
                 </div>
 
-                <p>My role is the infrastructure: the control plane, dispatch gates, telemetry, artifact packaging, provenance model, and release process. The Enoch corpus — 120 AI-generated research artifacts produced over approximately two weeks, with evidence bundles, claim ledgers, reproducibility metadata, and quality reports — is published for inspection and critique. I do not claim personal authorship of the generated papers.</p>
+                <p>My role is the infrastructure: the control plane, dispatch gates, telemetry, artifact packaging, provenance model, and release process. The Enoch corpus indexes 497 AI-generated research artifacts; my own strict claim/evidence audit fails 494 of them and passes 3. That failure rate is headlined on the project's front page — the audit gate is the product, not the papers. I do not claim personal authorship of the generated papers.</p>
 
                 <div class="project-links">
                     <a href="https://github.com/alias8818/enoch-agentic-research-system">System repository</a>
@@ -490,43 +523,17 @@
             </div>
         </section>
 
-        <!-- Hardware & Kernel Work -->
-        <section>
-            <h2>Hardware & Kernel Work</h2>
-            <p style="color: var(--text-dim); font-size: 0.92rem; margin-bottom: 28px; max-width: 600px;">Work on NVIDIA's Grace Blackwell consumer architecture (sm_121 / DGX Spark) — a platform with LPDDR5X memory, blockscaled MMA paths, and TMA async data movement that differs from H100/A100/H200/B200/B300. These projects were done in a private lab and are not publicly released.</p>
-
-            <div class="lab-grid">
-                <div class="lab-item">
-                    <h3>FlashInfer SM121</h3>
-                    <span class="tagline">Kernel debugging and patching for Blackwell</span>
-                    <p>Debugged and patched FlashInfer for sm_121. When primary kernel paths produced Xid 13 and Xid 43 GPU faults, worked through the CuTe-DSL fallback path as a secondary route. Documented illegal instruction errors, misaligned addresses, and warp exceptions found in NVIDIA's kernel code running on sm_121. Built a systematic debugging campaign with variant matrices and regression runbooks for a platform whose architecture (LPDDR5X, blockscaled MMA, TMA) differs from H100/A100/H200/B200/B300.</p>
-                </div>
-
-                <div class="lab-item">
-                    <h3>CUTLASS Blockscaled TMA</h3>
-                    <span class="tagline">Patches to NVIDIA's CUTLASS for sm_121 TMA operations</span>
-                    <p>Modified NVIDIA's CUTLASS library for sm_121 blockscaled TMA operations — fixing how the Tensor Memory Accelerator loads data for the Blackwell blockscaled MMA path. Patches cover sm_100, sm_120, and sm_121 layout and builder headers.</p>
-                </div>
-
-                <div class="lab-item">
-                    <h3>Blackwell Inference Patches</h3>
-                    <span class="tagline">vLLM, llama.cpp, and Mamba kernel work for GB10</span>
-                    <p>Extended vLLM with SM120/SM121 compute capability mapping and MXFP4 backend detection. Added MXFP4/MoE tuning and BLACKWELL-OPT compilation flags to llama.cpp. Optimized Mamba SSM kernels: d_state reduction from 128→64 (27–34% faster on LPDDR5X), custom Triton kernels with explicit backward passes, and nsight profiling harnesses with A/B testing across BF16/TF32/torch.compile modes.</p>
-                </div>
-
-                <div class="lab-item">
-                    <h3>Project Squeegee</h3>
-                    <span class="tagline">FP4 hotpatches and diffusion LM research</span>
-                    <p>Seven FlashInfer SM121 FP4 hotpatches — workarounds for broken vendor code causing Xid 13 errors on GB10. Diffusion LM research pipeline with curriculum generation, education quality scoring, and reasoning parsers. Tracked and documented GPU crashes from vendor kernel code.</p>
-                </div>
-            </div>
-        </section>
-
         <!-- Architecture Research -->
         <section>
             <h2>Architecture Research</h2>
 
             <div class="lab-grid">
+                <div class="lab-item">
+                    <h3>CoSpec</h3>
+                    <span class="tagline">Spectral initialization from token co-occurrence</span>
+                    <p>Research on whether variance-matched spectral initialization from token co-occurrence matrices improves early training dynamics for GPT-2-style models. Completed study with controlled experiments across five conditions (baseline, e_only, h_only, e_plus_h, spectrum_random). Result: the e_only condition — initializing only the embedding matrix from co-occurrence spectra — beat baseline in both screening and confirmation runs. Rust backend for co-occurrence accumulation performance.</p>
+                </div>
+
                 <div class="lab-item">
                     <h3>Opus</h3>
                     <span class="tagline">Hybrid Mamba-2 SSM + differential attention</span>
@@ -540,16 +547,16 @@
                 </div>
 
                 <div class="lab-item">
-                    <h3>CoSpec</h3>
-                    <span class="tagline">Spectral initialization from token co-occurrence</span>
-                    <p>Research on whether variance-matched spectral initialization from token co-occurrence matrices improves early training dynamics for GPT-2-style models. Completed study with controlled experiments across five conditions (baseline, e_only, h_only, e_plus_h, spectrum_random). Result: the e_only condition — initializing only the embedding matrix from co-occurrence spectra — beat baseline in both screening and confirmation runs. Rust backend for co-occurrence accumulation performance.</p>
-                </div>
-
-                <div class="lab-item">
                     <h3>TurboQuant</h3>
                     <span class="tagline">Quantization research reproduction</span>
                     <p>Local reproduction and evaluation of Google's TurboQuant paper. Implemented MSE codec (random rotation + Lloyd-Max codebook), product codec (MSE + QJL residual), split codec (mixed-precision channel split), and grouped passkey scoring with KV-cache proxy evaluation.</p>
                 </div>
+                <div class="lab-item">
+                    <h3>ArborealMoE</h3>
+                    <span class="tagline">Recursive MoE with per-token halting — and why it failed</span>
+                    <p>Experimental PyTorch architecture with a recursive mixture-of-experts tree, per-token adaptive halting, and path-conditioned LoRA specialization. At tiny scale, routing worked mechanically but specialization did not meaningfully emerge — the model converged toward shallow, uniform routing. Documented routing collapse, expert capacity constraints, and scale recommendations for future runs. Published for the negative result, not the architecture.</p>
+                </div>
+
             </div>
         </section>
 

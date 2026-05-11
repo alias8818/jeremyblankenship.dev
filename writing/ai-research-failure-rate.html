@@ -6,7 +6,7 @@
     <title>I Put My AI Research System's Failure Rate on Its Own Front Page — Jeremy Blankenship</title>
     <meta name="description" content="I built an AI research system that publishes 377 canonical papers after duplicate cleanup and one subsequent corpus import. My own strict audit gate fails 374 of them. I headline that failure rate on the front page — not as a confession, as a feature. Here's why.">
     <meta property="og:title" content="I Put My AI Research System's Failure Rate on Its Own Front Page">
-    <meta property="og:description" content="384 canonical AI-generated papers. 3 pass my own strict audit. 374 do not. Here is why that number belongs on the front page.">
+    <meta property="og:description" content="385 canonical AI-generated papers. 3 pass my own strict audit. 374 do not. Here is why that number belongs on the front page.">
     <meta property="og:type" content="article">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="../styles.css">
@@ -33,7 +33,7 @@
     <div class="num"><span class="value">373</span><span class="label">do not</span></div>
 </div>
 
-<p>I built an agentic research system called Enoch. It queues ideas, gates worker dispatch, supervises GPU runs, syncs evidence, and packages the results as AI-generated research artifacts. The public corpus now contains 384 canonical artifacts: 376 unique topics from the duplicate-cleanup pass plus 8 later finalized corpus imports.</p>
+<p>I built an agentic research system called Enoch. It queues ideas, gates worker dispatch, supervises GPU runs, syncs evidence, and packages the results as AI-generated research artifacts. The public corpus now contains 385 canonical artifacts: 376 unique topics from the duplicate-cleanup pass plus 9 later finalized corpus imports.</p>
 
 <p>That number changed during the release cleanup. The first public pass had 497 slug directories. A dedupe audit found 119 duplicate clusters and 121 duplicate directories. The cleanup kept the unsuffixed canonical slug, removed the suffixed siblings, and recovered 118 populated claim ledgers from older duplicate siblings before deleting them. The result is smaller and more honest: 376 unique topics, not 497 directory entries.</p>
 
@@ -45,7 +45,7 @@
 
 <h2>Why the number is there</h2>
 
-<p>There is a second number on the same page: <strong>384 of 384 pass the packaging and provenance lint.</strong> Every artifact has the required metadata, an AI provenance notice, no placeholder citations, no unsupported claims of human authorship or peer review, and no obvious overclaim patterns. That gate is real and non-trivial.</p>
+<p>There is a second number on the same page: <strong>385 of 385 pass the packaging and provenance lint.</strong> Every artifact has the required metadata, an AI provenance notice, no placeholder citations, no unsupported claims of human authorship or peer review, and no obvious overclaim patterns. That gate is real and non-trivial.</p>
 
 <p>It is also, by itself, dangerous.</p>
 
@@ -53,7 +53,7 @@
 
 <p>If I shipped only the first number, I would be telling a narrow truth in a way that produced a broader lie. So I shipped the second number too. Side by side, the same size, the same visual weight:</p>
 
-<blockquote><p>384/384 pass packaging and provenance lint.<br>3 / 377 pass strict claim and evidence audit.</p></blockquote>
+<blockquote><p>385/385 pass packaging and provenance lint.<br>3 / 377 pass strict claim and evidence audit.</p></blockquote>
 
 <p>The two numbers together tell the real story. The first says the corpus is well-formed. The second says being well-formed is not the same as being correct, and only three papers have demonstrated they can tell the difference.</p>
 
@@ -71,7 +71,7 @@
 
 <p>That is the gate. It is strict on purpose. It is not asking "did the paper look professional?" It is asking "if someone wanted to check your claims, could they?"</p>
 
-<p>For 381 of the 384 papers, the answer is no. The most common reason is the simplest one: the paper makes claims in prose, references a <code>results/throughput.csv</code> file to back them up, and that file does not exist in the public repository. The script tracked 1,429 result-file references across the cleaned corpus. Only 22 of the referenced files are publicly present. The other 1,387 point at artifacts on my private filesystem that a reader cannot see.</p>
+<p>For 382 of the 385 papers, the answer is no. The most common reason is the simplest one: the paper makes claims in prose, references a <code>results/throughput.csv</code> file to back them up, and that file does not exist in the public repository. The script tracked 1,429 result-file references across the cleaned corpus. Only 22 of the referenced files are publicly present. The other 1,387 point at artifacts on my private filesystem that a reader cannot see.</p>
 
 <p>I could have shipped the release without this number being visible. I chose not to.</p>
 
@@ -83,7 +83,7 @@
 
 <p>That is the actual lesson. AI research release hygiene is not just writing better papers. It is preserving the boring connective tissue — claim ledgers, manifests, result-file references, provenance fields — when the pipeline changes shape. The prose can improve while the evidence model regresses. Unless a validator catches that, the release looks better while becoming less auditable.</p>
 
-<p>After cleanup, the denominator fell from 497 to 376 and 118 claim ledgers were rescued; 8 later finalized corpus imports moved the live denominator to 384. The strict pass count stayed at three. That is the key fact. Duplicates were not the real problem. Missing public evidence was.</p>
+<p>After cleanup, the denominator fell from 497 to 376 and 118 claim ledgers were rescued; 9 later finalized corpus imports moved the live denominator to 385. The strict pass count stayed at three. That is the key fact. Duplicates were not the real problem. Missing public evidence was.</p>
 
 <h2>The three that pass</h2>
 
